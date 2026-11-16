@@ -18,7 +18,8 @@ pnpm = "11.10.0"
 #   mise run d2:png --all                      all files
 #   mise run d2:png --file <path/to/file.d2>   single file
 #
-#   mise run kit:update                      - Merge upstream design-doc-kit changes
+#   mise run kit:update                      - Overwrite kit-owned files with the latest design-doc-kit
+#   KIT_BRANCH=ja mise run kit:update          switch language (ja / main)
 #
 #   mise run textlint (tl)                   - Check all Markdown files with textlint (design-docs/**)
 #   mise run textlint:diff (tld)             - Check changed Markdown files with textlint (design-docs/** only)
@@ -166,14 +167,25 @@ echo "Edit it with: ${EDITOR:-vi} $dir/README.md"
 """
 
 [tasks."kit:update"]
-description = "Merge upstream (design-doc-kit) changes into this repository."
+description = "Overwrite the kit-owned files with the latest design-doc-kit. local/ and your design docs are untouched. Env: KIT_BRANCH (ja|main), KIT_REPO"
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
-if ! git remote get-url upstream >/dev/null 2>&1; then
-  echo "No 'upstream' remote. Add it first: git remote add upstream <design-doc-kit URL>" >&2
+repo="${KIT_REPO:-https://github.com/nitaking/design-doc-kit.git}"
+branch="${KIT_BRANCH:-ja}"
+
+if [ -n "$(git status --porcelain)" ]; then
+  echo "Working tree is not clean. Commit or stash first so you can review the update as a diff." >&2
   exit 1
 fi
-git fetch upstream
-git merge "upstream/${KIT_BRANCH:-ja}"
+
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+git clone --quiet --depth 1 --branch "$branch" "$repo" "$tmp/kit"
+rm -rf "$tmp/kit/.git"
+
+tar -C "$tmp/kit" --exclude='./local' --exclude='./design-docs/????-??-??-*' -cf - . | tar -xf -
+
+echo "Updated from ${repo} (${branch}). Review and commit:"
+git status --short
 """

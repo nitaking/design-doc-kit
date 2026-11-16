@@ -57,8 +57,11 @@ AI向けの制約は [AGENTS.md](AGENTS.md)、レビューの観点は [REVIEW.m
 
 GitHub の「Use this template」からリポジトリを作ります。[mise](https://mise.jdx.dev/) が必要です。
 
+テンプレートは英語版（`main`）から作られます。日本語版にするには、最初に `KIT_BRANCH=ja mise run kit:update` を1回実行します。
+
 ```shell
 mise install
+KIT_BRANCH=ja mise run kit:update   # 日本語版に切り替える（初回のみ）
 pnpm install
 mise run doc:new <slug>     # design-docs/YYYY-MM-DD-<slug>/README.md を作成
 mise run textlint:diff      # 変更した Markdown を検査
@@ -85,7 +88,7 @@ git commit -m "docs(shared-docs): update to latest"
 
 ## リポジトリ固有の設定
 
-この Kit が持つファイルは編集せず、固有の内容は `local/` に書きます。こうしておくと、Kit の更新を取り込むときに衝突しません。
+この Kit が持つファイルは編集せず、固有の内容は `local/` に書きます。Kit の更新は、Kit が持つファイルを上書きするため、編集した内容は消えます。
 
 | 書く内容 | 場所 |
 | --- | --- |
@@ -96,9 +99,12 @@ git commit -m "docs(shared-docs): update to latest"
 ## 更新の取り込み
 
 ```shell
-git remote add upstream https://github.com/nitaking/design-doc-kit.git   # 初回のみ
-mise run kit:update        # upstream/ja を取り込む
+mise run kit:update
 ```
+
+Kit の最新版を取得し、Kit が持つファイルを上書きします。`local/` と `design-docs/` の設計書には触れません。差分を `git diff` で確認して、コミットしてください。
+
+Kit を fork して自社版にしている場合は、`KIT_REPO=<fork の URL>` で取得元を変えられます。
 
 ## ライセンス
 
