@@ -37,6 +37,18 @@ After these experiences, this kit sets up a format in which people can immerse t
 
 The constraints for AI are in [CLAUDE.md](CLAUDE.md), and the review viewpoints are in [REVIEW.md](REVIEW.md).
 
+## How it differs from similar tools
+
+Similar tools fall into three groups. This kit gives AI a different role from all of them.
+
+| Group | Examples | Role of AI | How this kit differs |
+| --- | --- | --- | --- |
+| Spec-driven development | [Spec Kit](https://github.com/github/spec-kit), [OpenSpec](https://github.com/Fission-AI/OpenSpec), [cc-sdd](https://github.com/gotalab/cc-sdd), [Tsumiki](https://github.com/classmethod/tsumiki) | AI generates requirements, design, and tasks; people review and approve them | AI does not write the design doc. The goal is not to have an agent implement, but to have the author think through the design and people review it |
+| ADR / docs-as-code | [MADR](https://github.com/adr/madr), [adr-tools](https://github.com/npryce/adr-tools), [Log4brains](https://github.com/thomvaill/log4brains) | None. They record and publish decisions people wrote | This kit assumes AI is used, and ships constraints for AI together with review viewpoints |
+| Skills where AI asks questions | [grill-me](https://github.com/mattpocock/skills), brainstorming in [superpowers](https://github.com/obra/superpowers) | AI asks questions to draw out the author's thinking. grill-me attaches a recommended answer to each question; brainstorming has AI write the design doc at the end | Drawing out the author's thinking is shared, and they can be used together. This kit provides the repository foundation that keeps the result: templates, review viewpoints, and a pull request workflow |
+
+Spec-driven development tools allow AI to fill unknowns with guesses and move on. For example, `/speckit.specify` in Spec Kit instructs the agent to "make informed guesses based on context and industry standards" and to use at most three clarification markers. This kit asks the opposite: AI leaves what the author has not answered open. We believe the value of a design doc lies in keeping facts, guesses, proposals, decisions, and open questions apart.
+
 ## What is included
 
 ![Files owned by the kit and files owned by your repository](assets/included.svg)
