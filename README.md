@@ -35,7 +35,7 @@ We wanted to exchange proposals, comments, and revisions the way pull requests a
 
 After these experiences, this kit sets up a format in which people can immerse themselves in thinking, and AI does not design and only accompanies.
 
-The constraints for AI are in [CLAUDE.md](CLAUDE.md), and the review viewpoints are in [REVIEW.md](REVIEW.md).
+The constraints for AI are in [AGENTS.md](AGENTS.md), and the review viewpoints are in [REVIEW.md](REVIEW.md).
 
 ## How it differs from similar tools
 
@@ -45,7 +45,7 @@ This kit is not a tool that has AI write the design doc. The author writes it; A
 
 **vs. skills where AI asks questions** ([grill-me](https://github.com/mattpocock/skills), brainstorming in [superpowers](https://github.com/obra/superpowers)) — AI keeps asking to draw out the author's thinking. Close in spirit to this kit, and they can be used together. grill-me leaves no files; brainstorming has AI write the design doc at the end. This kit adds the foundation for the author to write down what was drawn out, review it in pull requests, and distribute it to multiple repositories.
 
-**vs. ADR tools** ([MADR](https://github.com/adr/madr), [adr-tools](https://github.com/npryce/adr-tools), [Log4brains](https://github.com/thomvaill/log4brains)) — They record and publish decisions people wrote, and say nothing about how AI is used. This kit ships constraints for AI ([CLAUDE.md](CLAUDE.md)) and review viewpoints ([REVIEW.md](REVIEW.md)).
+**vs. ADR tools** ([MADR](https://github.com/adr/madr), [adr-tools](https://github.com/npryce/adr-tools), [Log4brains](https://github.com/thomvaill/log4brains)) — They record and publish decisions people wrote, and say nothing about how AI is used. This kit ships constraints for AI ([AGENTS.md](AGENTS.md)) and review viewpoints ([REVIEW.md](REVIEW.md)).
 
 **vs. Notion and other wikis** — See "Why this exists". We moved to Git for comments on part of a diagram, comments that survive edits, and version control.
 
@@ -58,6 +58,8 @@ The Japanese edition on the [`ja` branch](https://github.com/nitaking/design-doc
 ## Usage
 
 Create a repository from "Use this template" on GitHub. [mise](https://mise.jdx.dev/) is required.
+
+The template is created from the English edition (`main`). For the Japanese edition, run `KIT_BRANCH=ja mise run kit:update` once after creating the repository.
 
 ```shell
 mise install
@@ -85,7 +87,7 @@ git commit -m "docs(shared-docs): update to latest"
 
 ## Repository-specific settings
 
-Do not edit the files this kit owns. Write repository-specific content in `local/`. This avoids conflicts when you pull updates from the kit.
+Do not edit the files this kit owns. Write repository-specific content in `local/`. Updating the kit overwrites the files it owns, so edits to them are lost.
 
 | What to write | Where |
 | --- | --- |
@@ -96,9 +98,12 @@ Do not edit the files this kit owns. Write repository-specific content in `local
 ## Pulling updates
 
 ```shell
-git remote add upstream https://github.com/nitaking/design-doc-kit.git   # first time only
-mise run kit:update        # merges upstream/main
+mise run kit:update
 ```
+
+Fetches the latest kit and overwrites the files the kit owns. `local/` and your design docs under `design-docs/` are untouched. Review the result with `git diff` and commit it.
+
+If you maintain a fork of the kit for your organization, point `KIT_REPO=<URL of the fork>` at it.
 
 ## License
 
