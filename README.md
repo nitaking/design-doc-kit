@@ -35,7 +35,7 @@ Pull Request のように、提案とコメントと修正のやりとりがし�
 
 このような出来事があり、今回、「人間が思考に没頭できる」「AIは設計を行わない、伴走のみを行う」フォーマットを整備した。
 
-AI向けの制約は [CLAUDE.md](CLAUDE.md)、レビューの観点は [REVIEW.md](REVIEW.md) にあります。
+AI向けの制約は [AGENTS.md](AGENTS.md)、レビューの観点は [REVIEW.md](REVIEW.md) にあります。
 
 ## 似たツールとの違い
 
@@ -45,7 +45,7 @@ AI向けの制約は [CLAUDE.md](CLAUDE.md)、レビューの観点は [REVIEW.m
 
 **vs. AI が質問するスキル**（[grill-me](https://github.com/mattpocock/skills)、[superpowers](https://github.com/obra/superpowers) の brainstorming）— AI が質問を重ねて作者の考えを引き出します。この Kit と思想が近く、併用できます。grill-me はファイルを残さず、brainstorming は最後に AI が設計書を書きます。この Kit は、引き出した考えを作者が書き、PR でレビューし、複数のリポジトリへ配るための土台を足します。
 
-**vs. ADR ツール**（[MADR](https://github.com/adr/madr)、[adr-tools](https://github.com/npryce/adr-tools)、[Log4brains](https://github.com/thomvaill/log4brains)）— 人が書いた決定を記録し、公開します。AI の使い方は扱いません。この Kit は、AI への制約（[CLAUDE.md](CLAUDE.md)）とレビュー観点（[REVIEW.md](REVIEW.md)）を同梱します。
+**vs. ADR ツール**（[MADR](https://github.com/adr/madr)、[adr-tools](https://github.com/npryce/adr-tools)、[Log4brains](https://github.com/thomvaill/log4brains)）— 人が書いた決定を記録し、公開します。AI の使い方は扱いません。この Kit は、AI への制約（[AGENTS.md](AGENTS.md)）とレビュー観点（[REVIEW.md](REVIEW.md)）を同梱します。
 
 **vs. Notion などの wiki** — 「なぜ作ったか」に書いた通りです。図の一部へのコメント、変更に追従するコメント、バージョン管理のために Git へ移しました。
 
