@@ -1,5 +1,9 @@
 # design-doc-kit
 
+[![kit](https://github.com/nitaking/design-doc-kit/actions/workflows/kit.yml/badge.svg?branch=ja)](https://github.com/nitaking/design-doc-kit/actions/workflows/kit.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?logo=github&logoColor=white)](https://github.com/new?template_owner=nitaking&template_name=design-doc-kit)
+
 Design Doc を書き、レビューするためのリポジトリテンプレート。AIに作者の判断を代行させないことを目的にしています。
 
 [English](https://github.com/nitaking/design-doc-kit/tree/main)
@@ -104,7 +108,15 @@ mise run kit:update
 
 Kit の最新版を取得し、Kit が持つファイルを上書きします。`local/` と `design-docs/` の設計書には触れません。差分を `git diff` で確認して、コミットしてください。
 
+`KIT_BRANCH` にはタグも指定できます。`KIT_BRANCH=v0.1.0-ja` のように書くと、その版に固定できます。変更点は [Releases](https://github.com/nitaking/design-doc-kit/releases) にあります。
+
 Kit を fork して自社版にしている場合は、`KIT_REPO=<fork の URL>` で取得元を変えられます。
+
+CI では、Kit から新しいリポジトリを作り、`doc:new` と `kit:update` が動くことを push ごとに確かめています（[kit.yml](.github/workflows/kit.yml)）。
+
+## 貢献
+
+[CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
 ## ライセンス
 
