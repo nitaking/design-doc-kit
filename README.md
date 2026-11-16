@@ -2,7 +2,7 @@
 
 Design Doc を書き、レビューするためのリポジトリの土台です。AIに作者の判断を代行させないことを前提にしています。
 
-[English](#english)
+[English](https://github.com/nitaking/design-doc-kit/tree/main)
 
 ## 考え方
 
@@ -49,7 +49,7 @@ Design Doc の書き方は [design-docs/README.md](design-docs/README.md) を参
 
 ```shell
 git remote add upstream https://github.com/nitaking/design-doc-kit.git   # 初回のみ
-mise run kit:update
+mise run kit:update        # upstream/ja を取り込む
 ```
 
 ## ライセンス
@@ -57,41 +57,3 @@ mise run kit:update
 - 設定ファイルとタスク定義: [MIT](LICENSE)
 - 規約とテンプレートの文面（Markdown）: [CC BY 4.0](LICENSE-CC-BY-4.0)
 
----
-
-## English
-
-A foundation for repositories where teams write and review design docs. It assumes AI must not make the author's decisions.
-
-The contents (guidelines, templates, and lint rules) are written in Japanese.
-
-### Idea
-
-When AI drafts a design doc, it fills in business rules and rationale the author never decided, and the result reads plausibly. This kit limits AI to asking the author questions and organizing what has been confirmed. Open questions stay open.
-
-- [CLAUDE.md](CLAUDE.md): constraints for AI when writing and reviewing
-- [REVIEW.md](REVIEW.md): review viewpoints for authors and reviewers
-- [design-docs/_template/](design-docs/_template/): design doc templates
-- [mise.toml](mise.toml): tasks for scaffolding, D2 diagrams, and textlint
-
-### Usage
-
-Create a repository with "Use this template", then:
-
-```shell
-mise install
-pnpm install
-mise run doc:new <slug>
-```
-
-Keep kit-owned files unedited and put repository-specific content in `local/`. To pull updates:
-
-```shell
-git remote add upstream https://github.com/nitaking/design-doc-kit.git   # first time only
-mise run kit:update
-```
-
-### License
-
-- Configuration and task definitions: [MIT](LICENSE)
-- Guidelines and templates (Markdown): [CC BY 4.0](LICENSE-CC-BY-4.0)

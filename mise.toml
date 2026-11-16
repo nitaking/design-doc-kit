@@ -175,5 +175,5 @@ if ! git remote get-url upstream >/dev/null 2>&1; then
   exit 1
 fi
 git fetch upstream
-git merge upstream/main
+git merge "upstream/${KIT_BRANCH:-ja}"
 """
