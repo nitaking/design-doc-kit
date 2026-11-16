@@ -37,6 +37,18 @@ Pull Request のように、提案とコメントと修正のやりとりがし�
 
 AI向けの制約は [CLAUDE.md](CLAUDE.md)、レビューの観点は [REVIEW.md](REVIEW.md) にあります。
 
+## 似たツールとの違い
+
+似たツールは3つの系統に分けられます。この Kit は、どの系統とも AI の役割が異なります。
+
+| 系統 | 例 | AI の役割 | この Kit との違い |
+| --- | --- | --- | --- |
+| 仕様駆動開発 | [Spec Kit](https://github.com/github/spec-kit)、[OpenSpec](https://github.com/Fission-AI/OpenSpec)、[cc-sdd](https://github.com/gotalab/cc-sdd)、[Tsumiki](https://github.com/classmethod/tsumiki) | 要件・設計・タスクを AI が生成し、人がレビューして承認する | AI に設計書を書かせない。目的は、エージェントに実装させることではなく、作者が設計を考え、人がレビューすること |
+| ADR・docs-as-code | [MADR](https://github.com/adr/madr)、[adr-tools](https://github.com/npryce/adr-tools)、[Log4brains](https://github.com/thomvaill/log4brains) | なし。人が書いた決定を残し、公開する | AI を使う前提で、AI への制約とレビュー観点を同梱する |
+| AI が質問するスキル | [grill-me](https://github.com/mattpocock/skills)、[superpowers](https://github.com/obra/superpowers) の brainstorming | 質問して作者の考えを引き出す。grill-me は各質問に推奨回答を付け、brainstorming は最後に AI が設計書を書く | 考えを引き出す点は同じで、併用できる。この Kit は、その結果を残すリポジトリの土台（テンプレート、レビュー観点、PR での運用）を提供する |
+
+仕様駆動開発のツールは、不明な点を AI が推測で埋めて先へ進むことを認めています。たとえば Spec Kit の `/speckit.specify` は、「文脈と業界標準から妥当な推測をする」「要確認の印は最大3つまで」と指示しています。この Kit は逆に、作者が答えていない点を未決のまま残すことを AI に求めます。事実、推測、提案、決定、未決事項を区別して残すことが、設計書の価値だと考えているためです。
+
 ## 含まれるもの
 
 ![Kit が持つファイルと、各リポジトリが持つファイル](assets/included.svg)
