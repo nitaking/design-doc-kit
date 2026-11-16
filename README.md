@@ -55,6 +55,22 @@ mise run d2:png             # 変更した .d2 を PNG に変換
 
 Design Doc の書き方は [design-docs/README.md](design-docs/README.md) を参照してください。
 
+## 複数のリポジトリから参照する
+
+Design Doc のリポジトリを、参照する側のリポジトリに submodule として追加します。
+
+![仕様変更は Design Doc を更新し、submodule で各リポジトリに同期して、Agent などで半自動反映する](assets/submodule.svg)
+
+```shell
+# 参照する側のリポジトリで
+git submodule add <Design Doc リポジトリの URL> shared-docs
+
+# 設計の更新を取り込む
+git submodule update --remote shared-docs
+git add shared-docs
+git commit -m "docs(shared-docs): update to latest"
+```
+
 ## リポジトリ固有の設定
 
 この Kit が持つファイルは編集せず、固有の内容は `local/` に書きます。こうしておくと、Kit の更新を取り込むときに衝突しません。
