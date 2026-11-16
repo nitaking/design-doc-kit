@@ -4,7 +4,7 @@ A foundation for repositories where design docs are written and reviewed. It ass
 
 [日本語](https://github.com/nitaking/design-doc-kit/tree/ja)
 
-![Leaving the design to AI, compared with using design-doc-kit](assets/overview.svg)
+![When AI writes, everything looks decided. When AI asks, you can tell what is decided from what is open](assets/overview.svg)
 
 ## Why this exists
 
