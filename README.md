@@ -12,14 +12,37 @@ AI向けの制約は [CLAUDE.md](CLAUDE.md)、レビューの観点は [REVIEW.m
 
 ## 含まれるもの
 
-| 対象 | ファイル |
-| --- | --- |
-| AIへの執筆・レビュー規約 | [CLAUDE.md](CLAUDE.md) |
-| レビュー観点 | [REVIEW.md](REVIEW.md) |
-| Design Doc のテンプレート | [design-docs/_template/](design-docs/_template/) |
-| 任意部品（sudoモデリング） | [design-docs/_template/addons/](design-docs/_template/addons/sudo-modeling/README.md) |
-| 作成・作図・lint のタスク | [mise.toml](mise.toml) |
-| 日本語の文章 lint | [.textlintrc.yml](.textlintrc.yml)、[textlint.yml](.github/workflows/textlint.yml) |
+```mermaid
+flowchart LR
+  author([作者])
+  ai([AI])
+  reviewer([レビュアー])
+
+  subgraph kit["キットが持つ: upstream の merge で更新される"]
+    claude["CLAUDE.md<br/>AIへの規約"]
+    review["REVIEW.md<br/>レビュー観点"]
+    template["design-docs/_template/<br/>テンプレート"]
+    addon["addons/sudo-modeling/<br/>任意部品"]
+    tasks["mise.toml<br/>タスク"]
+    lint[".textlintrc.yml<br/>日本語の文章 lint"]
+  end
+
+  subgraph yours["各リポジトリが持つ"]
+    local["local/<br/>固有の指示と観点"]
+    docs["design-docs/YYYY-MM-DD-*/<br/>設計書"]
+  end
+
+  author -->|書く| docs
+  reviewer -->|レビューする| docs
+  ai -->|従う| claude
+  reviewer -->|確認に使う| review
+  template -->|コピーされる| docs
+  tasks -->|doc:new, d2:png| docs
+  lint -->|検査する| docs
+  claude -->|取り込む| local
+  review -->|リンクする| local
+  addon -.->|有効にする| local
+```
 
 ## 使い方
 
