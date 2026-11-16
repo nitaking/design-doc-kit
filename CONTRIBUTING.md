@@ -1,21 +1,22 @@
-# 貢献のしかた
+# Contributing
 
-## 原文と翻訳
+## Source and translation
 
-`ja` ブランチが原文です。`main` ブランチは英訳で、`ja` の変更を追って更新します。文章の変更は `ja` へ、英訳の修正は `main` へ Pull Request を送ってください。
+The `ja` branch is the source text. The `main` branch is the English translation and follows `ja`. Send changes to the rules, templates, or README to `ja`; send fixes to the English wording to `main`.
 
-## 変更の流れ
+## Change flow
 
-1. 変更したい内容を Issue に書く。規約（AGENTS.md、REVIEW.md）やテンプレートの変更は、どの場面で困ったかを添えてください。
-2. ブランチを切って変更し、Pull Request を送る。
-3. CI（[kit.yml](.github/workflows/kit.yml)）が、Kit から新しいリポジトリを作って `doc:new` と `kit:update` が動くことを確かめます。
+1. For changes to the rules (`AGENTS.md`, `REVIEW.md`) or to the templates, open an issue first and describe the situation where the current text got in the way. Typos, translation fixes, and CI fixes can go straight to a pull request.
+2. Create a branch, make the change, and open a pull request. The template asks what changed, why, and how you verified it.
+3. CI ([kit.yml](.github/workflows/kit.yml)) creates a repository from the previous version of the kit, then checks that `doc:new` works and that `kit:update` upgrades it to your version without touching `local/` or the design docs.
+4. Pull requests are squash-merged. The maintainer reviews every pull request; Copilot code review runs first.
 
-## 文章
+## Writing
 
-- 規約は「禁止」より「何をするか」で書く。1文に1つの内容。
-- 日本語の文章は `npx textlint <file>` で検査できます。
-- 図は `assets/*.excalidraw` を編集し、`npx @excalidraw/cli render assets/<name>.excalidraw --out assets/<name>.svg` で書き出します。
+- Write rules as what to do, not as prohibitions. One idea per sentence.
+- Japanese prose can be checked with `npx textlint <file>`.
+- Figures are edited in `assets/*.excalidraw` and exported with `npx @excalidraw/cli render assets/<name>.excalidraw --out assets/<name>.svg`.
 
-## 互換性
+## Compatibility
 
-`kit:update` は Kit が持つファイルを上書きします。利用者が触るのは `local/` と `design-docs/` の設計書だけなので、それ以外のファイル名や場所を変えるときは、Release ノートに移行手順を書いてください。
+`kit:update` overwrites the files the kit owns. Users only edit `local/` and their design docs under `design-docs/`, so when you rename or move any other file, write the migration steps in the release notes.
