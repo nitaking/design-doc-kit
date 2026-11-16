@@ -55,6 +55,22 @@ mise run d2:png             # converts changed .d2 files to PNG
 
 For how to write a design doc, see [design-docs/README.md](design-docs/README.md).
 
+## Referring to it from multiple repositories
+
+Add the design doc repository as a submodule to each repository that refers to it.
+
+![A spec change updates the design doc, submodules sync it to each repository, and agents apply it semi-automatically](assets/submodule.svg)
+
+```shell
+# In the repository that refers to it
+git submodule add <URL of the design doc repository> shared-docs
+
+# Pull in design updates
+git submodule update --remote shared-docs
+git add shared-docs
+git commit -m "docs(shared-docs): update to latest"
+```
+
 ## Repository-specific settings
 
 Do not edit the files this kit owns. Write repository-specific content in `local/`. This avoids conflicts when you pull updates from the kit.
