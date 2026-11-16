@@ -1,0 +1,76 @@
+name: kit
+
+on:
+  push:
+    branches: [main, ja]
+  pull_request:
+
+jobs:
+  smoke:
+    name: template works and upgrades
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: jdx/mise-action@v5
+
+      - name: Pick the previous version of the kit to upgrade from
+        id: previous
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            ref="origin/${{ github.base_ref }}"
+          else
+            ref="${{ github.event.before }}"
+            git cat-file -e "$ref^{commit}" 2>/dev/null || ref="HEAD~1"
+          fi
+          echo "ref=$(git rev-parse "$ref")" >> "$GITHUB_OUTPUT"
+          echo "Upgrading from $(git log -1 --format='%h %s' "$ref")"
+
+      - name: Create a repository from the previous version, as "Use this template" would
+        run: |
+          mkdir -p "$RUNNER_TEMP/user"
+          git archive "${{ steps.previous.outputs.ref }}" | tar -x -C "$RUNNER_TEMP/user"
+          cd "$RUNNER_TEMP/user"
+          git init -q -b main
+          git -c user.name=ci -c user.email=ci@example.com add -A
+          git -c user.name=ci -c user.email=ci@example.com commit -qm "Initial commit"
+          mise trust
+
+      - name: doc:new creates a design doc from the template
+        working-directory: ${{ runner.temp }}/user
+        run: |
+          mise run doc:new smoke
+          test -f design-docs/"$(date +%F)"-smoke/README.md
+
+      - name: kit:update upgrades to the version under test, leaving local/ and design docs alone
+        working-directory: ${{ runner.temp }}/user
+        run: |
+          echo "mine" > local/CLAUDE.md
+          echo "mine" > design-docs/"$(date +%F)"-smoke/README.md
+          git -c user.name=ci -c user.email=ci@example.com add -A
+          git -c user.name=ci -c user.email=ci@example.com commit -qm "user changes"
+
+          git -C "$GITHUB_WORKSPACE" branch -f under-test HEAD
+          KIT_REPO="file://$GITHUB_WORKSPACE" KIT_BRANCH=under-test mise run kit:update
+
+          test "$(cat local/CLAUDE.md)" = "mine"
+          test "$(cat design-docs/"$(date +%F)"-smoke/README.md)" = "mine"
+
+          # Every kit-owned file must now match the version under test.
+          git -C "$GITHUB_WORKSPACE" ls-files | grep -v '^local/' | while read -r f; do
+            cmp -s "$f" "$GITHUB_WORKSPACE/$f" || { echo "differs after upgrade: $f"; exit 1; }
+          done
+
+      - name: kit:update refuses to run on a dirty tree
+        working-directory: ${{ runner.temp }}/user
+        run: |
+          echo "dirty" >> REVIEW.md
+          if KIT_REPO="file://$GITHUB_WORKSPACE" KIT_BRANCH=under-test mise run kit:update; then
+            echo "expected failure on a dirty tree"; exit 1
+          fi
