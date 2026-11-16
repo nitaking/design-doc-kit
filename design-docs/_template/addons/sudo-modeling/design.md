@@ -1,26 +1,26 @@
-## sudoモデリング
+## sudo modeling
 
-<!-- DDDのために、業務の具体例とモデルを照らし合わせながら検討する。
-     図を完成させることではなく、用語・ルール・責務の認識を確かめるために行う。
-     以下は掲載順の例であり、考える順序を指定するものではない。
-     分からないことや認識が食い違う箇所は残し、確認に応じて図を書き直す。
-     既存モデルで説明できる場合は、そのモデルと今回の具体例の対応を示してもよい。
-     参考: sudoモデリング https://little-hands.hatenablog.com/entry/2022/06/01/ddd-modeling -->
+<!-- For DDD, work through the design by comparing concrete business examples with the model.
+     The aim is to check the shared understanding of terms, rules, and responsibilities, not to finish the diagrams.
+     The order below is an example of how to present them. It does not prescribe the order of thinking.
+     Leave what is unknown and where understandings differ, and redraw the diagrams as things are confirmed.
+     If an existing model explains it, you may show how that model maps to this concrete example.
+     Reference (Japanese): sudo modeling https://little-hands.hatenablog.com/entry/2022/06/01/ddd-modeling -->
 
-### システム関連図
+### System context diagram
 
-<!-- 誰が使うか、何と連携するか、どこまでを今回のシステムで扱うかを示す。 -->
+<!-- Show who uses it, what it integrates with, and how far this system's scope goes. -->
 
-### ユースケース図
+### Use case diagram
 
-<!-- 利用者がどのような目的でシステムを使うかを示す。業務の具体例と照らし合わせる。 -->
+<!-- Show for what purposes users use the system. Compare with concrete business examples. -->
 
-### ドメインモデル図
+### Domain model diagram
 
-<!-- 業務上の概念とその関係、ルール、責務を示す。
-     日本語名と英語名の対応を整理する。未確定の用語は区別して残す。 -->
+<!-- Show the business concepts and their relationships, rules, and responsibilities.
+     Keep undecided terms marked as such. -->
 
-### オブジェクト図
+### Object diagram
 
-<!-- 具体的な値や関係を使い、モデルで実際の業務を説明できるか確かめる。
-     迷ったら、具体例をオブジェクト図にしてからドメインモデル図を考えてもよい。 -->
+<!-- Use concrete values and relationships to check whether the model can explain the actual business.
+     If unsure, you may draw a concrete example as an object diagram first and then think about the domain model diagram. -->

@@ -1,6 +1,5 @@
 [tools]
 "aqua:terrastruct/d2" = "latest"
-pnpm = "11.10.0"
 
 # Available tasks:
 #   mise run doc:new <slug>                  - Create new Design Doc from template
@@ -20,12 +19,6 @@ pnpm = "11.10.0"
 #
 #   mise run kit:update                      - Merge upstream design-doc-kit changes
 #
-#   mise run textlint (tl)                   - Check all Markdown files with textlint (design-docs/**)
-#   mise run textlint:diff (tld)             - Check changed Markdown files with textlint (design-docs/** only)
-#
-#   mise run textlint:fix (tlf)              - Auto-fix all Markdown files with textlint (design-docs/**)
-#   mise run textlint:fix --file <path/to/file.md>  single file
-#   mise run textlint:fix:diff (tlfd)        - Auto-fix changed Markdown files with textlint (design-docs/** only)
 
 [tasks."d2:fmt"]
 description = "Format .d2 files. Default: --changed. Flags: --file <file>, --all"
@@ -93,59 +86,6 @@ echo "$files" | xargs -P "$cores" -I{} bash -c 'out="${1%.d2}.png"; echo "Genera
 echo "Done."
 """
 
-[tasks."textlint"]
-alias = "tl"
-description = "Check all Markdown files with textlint (design-docs/**)."
-run = "pnpm exec textlint 'design-docs/**/*.md'"
-
-[tasks."textlint:diff"]
-alias = "tld"
-description = "Check changed Markdown files with textlint (git diff vs HEAD, plus untracked, design-docs/** only)."
-run = """
-#!/usr/bin/env bash
-set -euo pipefail
-files=$(git diff --name-only HEAD -- ':(glob)design-docs/**/*.md'; git ls-files --others --exclude-standard ':(glob)design-docs/**/*.md')
-if [[ -z "$files" ]]; then
-  echo "No changed .md files."
-  exit 0
-fi
-echo "$files" | xargs pnpm exec textlint
-"""
-
-[tasks."textlint:fix"]
-alias = "tlf"
-description = "Auto-fix all Markdown files with textlint (design-docs/**). Flags: --file <file>"
-run = """
-#!/usr/bin/env bash
-set -euo pipefail
-flag="${1:-}"
-if [[ "$flag" == "--file" ]]; then
-  file="${2:?Usage: mise run textlint:fix --file <path/to/file.md>}"
-  pnpm exec textlint --fix "$file"
-  echo "Done."
-  exit 0
-elif [[ -n "$flag" ]]; then
-  echo "Unknown flag: $flag (use --file <file>)" >&2
-  exit 1
-fi
-pnpm exec textlint --fix 'design-docs/**/*.md'
-echo "Done."
-"""
-
-[tasks."textlint:fix:diff"]
-alias = "tlfd"
-description = "Auto-fix changed Markdown files with textlint (git diff vs HEAD, plus untracked, design-docs/** only)."
-run = """
-#!/usr/bin/env bash
-set -euo pipefail
-files=$(git diff --name-only HEAD -- ':(glob)design-docs/**/*.md'; git ls-files --others --exclude-standard ':(glob)design-docs/**/*.md')
-if [[ -z "$files" ]]; then
-  echo "No changed .md files."
-  exit 0
-fi
-echo "$files" | xargs pnpm exec textlint --fix
-"""
-
 [tasks."doc:new"]
 description = "Create a new Design Doc directory from _template. Usage: mise run doc:new <slug>"
 run = """
@@ -175,5 +115,5 @@ if ! git remote get-url upstream >/dev/null 2>&1; then
   exit 1
 fi
 git fetch upstream
-git merge upstream/main
+git merge "upstream/${KIT_BRANCH:-main}"
 """

@@ -1,31 +1,31 @@
 # <title>
 
-## 背景と目的
+## Background and goal
 
-<!-- 作者自身の認識から書き始める。整った説明になっていなくてもよい。
-     現在の業務や利用場面を、具体例から説明してください。
-     何が問題で、どうなれば解決したと判断できますか。
-     分からないことや、関係者に確認したいことは、分からないまま残してください。 -->
+<!-- Start from your own understanding. It does not need to be a polished explanation.
+     Explain the current business or usage context from concrete examples.
+     What is the problem, and how will you judge that it has been solved?
+     Leave what you do not know, and what you want to confirm with others, as unknown. -->
 
-<現在の状況と、解決したい問題>
+<The current situation and the problem to solve>
 
-## 設計
+## Design
 
-<!-- 何をどう変えるかと、その理由を書く。判断理由は、判断を説明する場所に添える。
-     説明に必要な見出しは自由に追加・変更・統合してよい。
-     対象範囲や代替案は、今回の判断を理解するために必要な場合に書く。 -->
+<!-- Write what changes and how, and why. Put the reason for a decision where the decision is explained.
+     Add, change, or merge headings freely as the explanation needs.
+     Write scope and alternatives when they are needed to understand this decision. -->
 
-<採用する設計と、その理由>
+<The design you adopt and the reason>
 
-## 相談したいこと
+## Things to discuss
 
-<!-- 判断に迷っていることや、確認したいことを書く。なければ節ごと削除する。 -->
+<!-- Write what you are unsure about and what you want to confirm. Delete the section if there is nothing. -->
 
-- <相談したい内容>
+- <What you want to discuss>
 
-<!-- この見出し構成は固定ではない。不要な記入案内と例は提出前に削除する。
-     図・表・文章は説明に合うものを使う。図のツールや形式は限定しない。
-     詳細を分けた方が読みやすい場合は、design.md、operations.md、validation.md などに分けてリンクする。
-     判断の根拠となる資料へのリンクは、説明する場所や末尾に置く。
-     確認観点は ../../REVIEW.md を参照する。
-     進捗・スケジュール・依存関係・担当者は Issue トラッカーや PR コメントで管理する。 -->
+<!-- This heading structure is not fixed. Delete unneeded guidance and examples before submitting.
+     Use diagrams, tables, or prose as fits the explanation. Diagram tools and formats are not restricted.
+     If details read better separately, split them into design.md, operations.md, validation.md, and so on, and link them.
+     Put links to the materials a decision is based on where it is explained, or at the end.
+     For review viewpoints, see ../../REVIEW.md.
+     Manage progress, schedule, dependencies, and assignees in the issue tracker or PR comments. -->

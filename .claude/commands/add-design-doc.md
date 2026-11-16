@@ -1,28 +1,28 @@
-# Add Design Doc - Usage: /add-design-doc [taskID] <title> (例: PROJ-123 新機能の設計)
+# Add Design Doc - Usage: /add-design-doc [taskID] <title> (e.g. PROJ-123 New feature design)
 
-`design-docs/` 配下に新しい Design Doc ファイルを作成する。
+Create a new design doc file under `design-docs/`.
 
-## 引数
+## Arguments
 
-`$ARGUMENTS` の形式: `[taskID] <title>`
+Format of `$ARGUMENTS`: `[taskID] <title>`
 
-例:
-- `PROJ-123 新機能の設計`
-- `認証リファクタリング`
+Examples:
+- `PROJ-123 New feature design`
+- `Auth refactoring`
 
-## 実行手順
+## Steps
 
-1. `$ARGUMENTS` を解析する。最初のトークンがチケットIDの形式（英字・ハイフン・数字）なら `taskID` とし、残りを `title` とする。そうでなければ全体を `title` とする
+1. Parse `$ARGUMENTS`. If the first token has the form of a ticket ID (letters, a hyphen, digits), take it as `taskID` and the rest as `title`. Otherwise take the whole as `title`
 
-2. ディレクトリ名を決定する:
-   - 形式: `design-docs/YYYY-MM-DD-<taskID>-<slug>/README.md`。`taskID` がなければ `design-docs/YYYY-MM-DD-<slug>/README.md`
-   - 日付は今日の日付（`currentDate` を参照）
-   - slug は title のスペースをハイフンに置換した英語表記（日本語の場合は適切に英訳）
-   - 同名のディレクトリが既にあれば作成せず、その旨を伝えて終了する
+2. Decide the directory name:
+   - Format: `design-docs/YYYY-MM-DD-<taskID>-<slug>/README.md`. Without a `taskID`, `design-docs/YYYY-MM-DD-<slug>/README.md`
+   - The date is today's date (see `currentDate`)
+   - The slug is the title in lowercase with spaces replaced by hyphens
+   - If a directory with the same name already exists, do not create it. Say so and stop
 
-3. `design-docs/_template/README.md` のテンプレートを読み込み、見出しの `<title>` を `title` の値に置換する
-   - それ以外の記入案内（`<!-- -->` のコメントや `<...>` のプレースホルダー）は作者が書き換えるため、そのまま残す
+3. Read the template `design-docs/_template/README.md` and replace `<title>` in the heading with the value of `title`
+   - Leave the rest of the guidance (`<!-- -->` comments and `<...>` placeholders) as is, because the author rewrites it
 
-4. `design-docs/<dir>/README.md` に書き出す
+4. Write it to `design-docs/<dir>/README.md`
 
-5. 作成したファイルパスを表示して完了を伝える
+5. Show the path of the created file and report completion

@@ -1,71 +1,71 @@
-# 設計書を扱うAIへの指示
+# Instructions for AI working on design docs
 
-このリポジトリで設計書の作成・編集・レビューを支援するときに従う。
+Follow these when helping to write, edit, or review design docs in this repository.
 
-## 作者の判断を代行しない
+## Do not make the author's decisions
 
-設計書を完成させることより、作者の判断と未決事項を正確に残すことを優先する。作者や資料から確認できない業務ルール・設計判断・採用理由を補完しない。
+Recording the author's decisions and open questions accurately takes priority over completing the design doc. Do not fill in business rules, design decisions, or rationale that cannot be confirmed from the author or the provided materials.
 
-| 行ってよいこと | 行ってはいけないこと |
+| Allowed | Not allowed |
 | --- | --- |
-| 作者の説明に質問し、矛盾・不足・別の解釈を指摘する | 作者が答えていない問いに、作者の立場で答える |
-| 仮説や設計案を、提案と明示して出す | 作者の採用判断なしに、提案を決定事項として本文へ取り込む |
-| 作者や資料に示された判断を、文章・図・表に整理する | もっともらしい採用理由や、検討していない代替案を後付けする |
-| コードから現在の動作を調べる | 現在の動作を、業務上正しい仕様だと扱う |
+| Ask about the author's explanation, and point out contradictions, gaps, and other possible readings | Answer, in the author's place, a question the author has not answered |
+| Offer hypotheses and design options, marked as proposals | Put a proposal into the document as a decision without the author adopting it |
+| Organize decisions stated by the author or the materials into prose, diagrams, and tables | Add plausible rationale, or alternatives that were never considered, after the fact |
+| Investigate the current behavior from the code | Treat the current behavior as the correct business specification |
 
-作者や資料ですでに確認できる内容を、改めて質問する必要はない。AIによる提案と、作者が採用した内容を区別する。文章の整形依頼を、設計変更への承認として扱わない。
+You do not need to ask again about what can already be confirmed from the author or the materials. Distinguish what AI proposed from what the author adopted. Do not treat a request to polish the text as approval of a design change.
 
-## 作業の進め方
+## How to proceed
 
-1. 作者の説明と提供資料を確認する。書き始めの説明がなく、資料でも補えない場合は、まず作者に状況や具体例を尋ねる。
-2. 判断に必要な情報が不足していれば質問し、その判断に依存する設計作業は回答を待つ。質問数や回答の形式は固定しない。
-3. 回答のない部分は未決のまま残す。空欄や見出しを埋めるために推測しない。
-4. 確認できた内容を整理する。事実、推測、提案、決定、未決事項の違いを保つ。
+1. Check the author's explanation and the provided materials. If there is no initial explanation and the materials do not make up for it, first ask the author about the situation and for concrete examples.
+2. If information needed for a decision is missing, ask, and wait for the answer before doing design work that depends on that decision. The number of questions and the form of the answers are not fixed.
+3. Leave unanswered parts open. Do not guess in order to fill in blanks or headings.
+4. Organize what has been confirmed. Keep facts, guesses, proposals, decisions, and open questions distinct.
 
-未確認のコマンドや数値を、確認済みの実施手順や保証値として記載しない。検証の計画と実施結果を混同しない。
+Do not write unverified commands or numbers as verified procedures or guaranteed values. Do not confuse a verification plan with its results.
 
-### 設計を一任された場合
+### When the design is left to you
 
-「設計して」「任せる」と依頼されても、作者の問題認識や設計判断が確認できない状態では、それらに依存する設計書やモデルの作成を進めない。まず作者に問い、回答を待つ。一任する依頼を、個々の設計案への採用判断として扱わない。
+Even when asked to "design it" or told "it's up to you", do not proceed with design docs or models that depend on the author's understanding of the problem or on the author's design decisions while those cannot be confirmed. Ask the author first and wait for the answer. Do not treat a request that leaves the design to you as adoption of individual design options.
 
-質問と同時に、未確認の前提に基づく完成案を提示しない。「提案」や「仮置き」と表示しても、この制約は同じとする。
+Do not present a finished proposal based on unconfirmed assumptions together with your questions. This constraint is the same even if you label it a "proposal" or "tentative".
 
-作者が考えを整理するための調査、論点整理、選択肢の提示・比較は行ってよい。採用判断は作者に求め、必要な判断を確認してから、その判断に依存する設計作業を再開する。
+You may research, organize the issues, and present and compare options to help the author sort out their thinking. Ask the author for the adoption decision, and resume the design work that depends on it after confirming the necessary decisions.
 
-作者や資料ですでに確認できる判断は、改めて尋ねなくてよい。ただし、資料がそろっていることと、作者の判断が確認できることを同一視しない。
+You do not need to ask again about decisions that can already be confirmed from the author or the materials. However, do not equate having the materials with having confirmed the author's decision.
 
-## 構成と文章
+## Structure and prose
 
-- テンプレートは穴埋めの仕様ではない。説明対象に合わせて見出しを追加・変更・統合する。
-- 図のツールや形式は限定しない。説明に不要な図や比較表を作らない。
-- 条件と結果、理由と判断の関係を保つ。一文に別々の話題を詰め込まない。
-- 意味のない強調や一般論を足さない。識別子・仕様値・必須性・断定の強さは推敲で変えない。
-- 参照用の表は無理に散文へ展開しない。同じ説明を複数ファイルへ複製しない。
+- A template is not a fill-in-the-blank specification. Add, change, or merge headings to fit what is being explained.
+- Diagram tools and formats are not restricted. Do not create diagrams or comparison tables that the explanation does not need.
+- Keep the relationship between condition and result, and between reason and decision. Do not pack separate topics into one sentence.
+- Do not add meaningless emphasis or generalities. When polishing, do not change identifiers, specified values, whether something is required, or the strength of an assertion.
+- Do not force reference tables into prose. Do not duplicate the same explanation across files.
 
-## レビュー
+## Review
 
-設計書をレビューするときは、先に [REVIEW.md](REVIEW.md) を読む。文体からAIの利用有無を推定せず、設計の内容と判断の根拠を確認する。
+When reviewing a design doc, read [REVIEW.md](REVIEW.md) first. Do not infer from the writing style whether AI was used. Check the content of the design and the basis for its decisions.
 
-不足した判断をレビュー側で補って修正しない。何が不明で、設計のどこに影響するかを示し、作者への質問として返す。
+Do not fix the document by supplying missing decisions on the reviewer's side. Show what is unclear and which part of the design it affects, and return it to the author as a question.
 
-### レビュー結果の出力形式
+### Review output format
 
-指摘は [Conventional Comments](https://conventionalcomments.org/) の形式で書く。1行目にラベルと要旨を書き、空行のあとに根拠と設計への影響を続ける。1つの指摘で1つの論点を扱う。
+Write findings in the [Conventional Comments](https://conventionalcomments.org/) format. Put the label and subject on the first line, then a blank line, then the basis and the effect on the design. One finding covers one point.
 
-| 指摘の内容 | ラベル |
+| Finding | Label |
 | --- | --- |
-| 文書内の矛盾や、確認できた要件との食い違いなど、根拠を示せる問題 | `issue (blocking)` または `issue (non-blocking)` |
-| 情報が足りず、設計の妥当性を判断できない点 | `question` |
-| 欠陥ではない、任意の改善案 | `suggestion (non-blocking)` |
+| A problem you can show the basis for, such as a contradiction within the document or a mismatch with a confirmed requirement | `issue (blocking)` or `issue (non-blocking)` |
+| A point where information is missing and the validity of the design cannot be judged | `question` |
+| An optional improvement that is not a defect | `suggestion (non-blocking)` |
 
-`question` には、何が不明で、設計のどの判断に影響するかを書く。
+In a `question`, write what is unclear and which design decision it affects.
 
 ```text
-question: 退会後のデータ保持期間が書かれていません。
+question: The data retention period after account deletion is not stated.
 
-「データ」の節では削除の手順だけが説明されています。保持期間が決まらないと、バッチの設計を判断できません。期間は決まっていますか。
+The "Data" section explains only the deletion procedure. Without the retention period, the batch design cannot be judged. Has the period been decided?
 ```
 
-## このリポジトリ固有の指示
+## Instructions specific to this repository
 
 @local/CLAUDE.md

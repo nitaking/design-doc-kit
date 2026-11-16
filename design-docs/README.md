@@ -1,39 +1,39 @@
 # Design Doc
 
-## 作成手順
+## How to create one
 
-1. ひな形を生成する
+1. Generate the skeleton
 
     ```shell
     mise run doc:new <slug>
-    # 例: mise run doc:new my-feature
-    # → design-docs/YYYY-MM-DD-my-feature/README.md を作成
+    # e.g. mise run doc:new my-feature
+    # -> creates design-docs/YYYY-MM-DD-my-feature/README.md
     ```
 
-2. `README.md` を編集する
-3. 説明を分けた方が読みやすい場合は、以下のテンプレートファイルを同ディレクトリへコピーして追加する
-4. PR を作成してレビューを依頼する
+2. Edit `README.md`
+3. If the explanation reads better split up, copy the template files below into the same directory
+4. Open a PR and request a review
 
 > [!NOTE]
-> Design Doc はストック情報です。フロー情報は Issue や PR コメントで管理しましょう。
+> A design doc is stock information. Manage flow information in issues and PR comments.
 
-## テンプレート構成
+## Templates
 
-| ファイル | 内容 | 必須 |
+| File | Content | Required |
 |---|---|---|
-| [`_template/README.md`](_template/README.md) | 背景と目的・設計・相談したいこと | 必須 |
-| [`_template/design.md`](_template/design.md) | 設計の検討と判断 | 説明を分ける場合 |
-| [`_template/operations.md`](_template/operations.md) | 変更の適用方法と失敗時の対応 | 説明を分ける場合 |
-| [`_template/validation.md`](_template/validation.md) | 確かめたいことと検証方法 | 説明を分ける場合 |
-| [`_template/addons/sudo-modeling/`](_template/addons/sudo-modeling/README.md) | DDDのための sudoモデリング | 任意部品 |
+| [`_template/README.md`](_template/README.md) | Background and goal, design, things to discuss | Required |
+| [`_template/design.md`](_template/design.md) | Design considerations and decisions | When splitting the explanation |
+| [`_template/operations.md`](_template/operations.md) | How to apply the change and respond to failure | When splitting the explanation |
+| [`_template/validation.md`](_template/validation.md) | What to confirm and how to verify it | When splitting the explanation |
+| [`_template/addons/sudo-modeling/`](_template/addons/sudo-modeling/README.md) | sudo modeling for DDD | Add-on |
 
-テンプレートの見出しや書式は固定ではありません。作者自身が現状の具体例と解決したい問題を説明し、設計対象に合う構成で検討を進めてください。
+The headings and format of the templates are not fixed. Explain, as the author, concrete examples of the current situation and the problem you want to solve, and work through the design in a structure that fits what is being designed.
 
-セルフレビューと他者レビューの確認観点は [REVIEW.md](../REVIEW.md) にまとめています。確認項目ごとの節を作る必要はありません。AIを使う場合の作業制約は [CLAUDE.md](../CLAUDE.md) を参照してください。
+The viewpoints for self-review and review by others are in [REVIEW.md](../REVIEW.md). You do not need a section for each item. For the constraints when using AI, see [CLAUDE.md](../CLAUDE.md).
 
 ## Tips
 
-D2 の図を掲載する際、元データへのリンクを `<figure>` で付けられます。
+When you include a D2 diagram, you can attach a link to its source with `<figure>`.
 
 ```markdown
 <figure>

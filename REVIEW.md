@@ -1,50 +1,50 @@
-# Design Doc のレビュー
+# Reviewing design docs
 
-作者によるセルフレビューと、他者によるレビューで使う。文体からAIの利用有無を判断するのではなく、設計の内容と判断の根拠を確かめる。
+Use this for the author's self-review and for review by others. Do not judge from the writing style whether AI was used. Check the content of the design and the basis for its decisions.
 
-すべての項目への回答や、専用の節の追加を求めるものではない。変更に関係する観点を確認し、読み手に説明が必要な内容だけを本文に反映する。以下にない論点も、設計対象に応じて確認する。
+This does not require an answer to every item or a dedicated section for each. Check the viewpoints relevant to the change, and reflect in the document only what readers need explained. Also check points not listed here, depending on what is being designed.
 
-リポジトリ固有の観点は [local/REVIEW.md](local/REVIEW.md) にまとめる。
+Viewpoints specific to this repository are in [local/REVIEW.md](local/REVIEW.md).
 
-## 問題と設計のつながり
+## Connection between the problem and the design
 
-- 解決したい問題が、対象の業務や利用場面とともに説明されているか。
-- 採用理由が、一般的な長所ではなく、今回の課題や制約に基づいているか。
-- 確認できた事実、推測、提案、決定、未決事項を区別できるか。
-- 重要な判断の根拠を、本文や参照資料からたどれるか。
+- Is the problem to be solved explained together with the business or usage context it applies to?
+- Is the rationale based on this problem and its constraints, not on general advantages?
+- Can confirmed facts, guesses, proposals, decisions, and open questions be told apart?
+- Can the basis for important decisions be traced from the document or its references?
 
-## 変更に応じた確認
+## Checks depending on the change
 
-| 観点             | 確認する内容                                                                                                                   |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| 外部API          | トークンの有効期限や更新、エラー時の処理やリトライを考慮しているか。401・429など、利用するAPIで起こる失敗を確認する。          |
-| データ           | 何を記録し、どの状態や経緯を説明する必要があるか。退会後の保持・削除を含め、データの扱いを決めているか。                       |
-| 権限             | 誰が利用し、どのリソースを取得・保存・変更できるか。管理画面や派生リソースにも必要な制限があるか。                             |
-| 入力・機密情報   | 型・文字長・必須条件などを検証しているか。認証ファイル・キー・シークレットの保管先は適切か。                                   |
-| 互換性           | 既存の利用者や連携先にどのような影響があるか。仕様を変更する場合、その移行方法を説明できるか。                                 |
-| 変更の適用・復旧 | 作業順、次へ進む条件、失敗時の対応を追えるか。データ移行、停止時間、切り戻しの可否や所要時間など、判断に必要な内容を確認する。 |
-| 段階公開・廃止   | Feature Flagなどの対象条件を説明できるか。旧機能やフラグを廃止する場合、時期や前提条件を確認する。                             |
-| 検証・評価       | 今回の懸念を、どの方法と結果で確かめるか。機能の評価方法を、ログ収集だけに限定していないか。                                   |
-| リリース後の確認 | 何をいつ確認し、異常をどう判断して誰に知らせるか。ログや指標を使う場合、調査に必要な情報がそろうか。                           |
+| Viewpoint | What to check |
+| --- | --- |
+| External APIs | Are token expiry and refresh, error handling, and retries considered? Check the failures that occur with the API in use, such as 401 and 429. |
+| Data | What is recorded, and which states and history need to be explainable? Is the handling of data decided, including retention and deletion after account deletion? |
+| Permissions | Who uses it, and which resources can they read, save, and change? Do admin screens and derived resources also have the restrictions they need? |
+| Input and secrets | Are type, length, and required conditions validated? Is the storage location for credential files, keys, and secrets appropriate? |
+| Compatibility | How are existing users and integrations affected? If the specification changes, can the migration be explained? |
+| Applying and recovering from the change | Can the order of work, the conditions for moving to the next step, and the response to failure be followed? Check what is needed to judge, such as data migration, downtime, and whether and how quickly it can be rolled back. |
+| Staged rollout and retirement | Can the targeting conditions, such as feature flags, be explained? If an old feature or flag is retired, check the timing and preconditions. |
+| Verification and evaluation | By what method and result will the concerns of this change be checked? Is the evaluation of the feature limited to collecting logs? |
+| Checks after release | What is checked and when, how is an anomaly judged, and who is told? If logs or metrics are used, is the information needed for investigation available? |
 
-## 説明の読みやすさ
+## Readability of the explanation
 
-- 誰が何をどの条件で行うかを読み取れるか。文を分けたことで条件や理由の掛かる先が変わっていないか。
-- 比較する案や、操作と結果の対応を追えるか。図・表・文章が内容に合っているか。
-- 同じ処理の説明が、テンプレートの分類に合わせるためだけに分散していないか。
-- 不要な記入例や重複説明が残っていないか。テンプレートの項目外という理由で、重要な論点が抜けていないか。
+- Can you tell who does what under which conditions? Has splitting sentences changed what a condition or reason applies to?
+- Can you follow the options being compared, and how operations map to results? Do the diagrams, tables, and prose fit the content?
+- Is the explanation of one process scattered only to match the template's categories?
+- Are there leftover fill-in examples or duplicated explanations? Is an important point missing because it was outside the template's items?
 
-## 指摘の返し方
+## How to return findings
 
-不明点を見つけた場合は、該当箇所、判断できない内容、設計への影響を示して作者に尋ねる。改善案を示す場合は、決定事項とは区別する。
+When you find something unclear, show the location, what cannot be judged, and the effect on the design, and ask the author. When you offer an improvement, keep it distinct from a decision.
 
-作者の能力や姿勢ではなく、文書の内容とその影響を扱う。根拠を示せる問題は明確に伝え、判断できないことは質問する。確認済みの問題まで、遠回しな質問に置き換える必要はない。
+Deal with the content of the document and its effects, not the author's ability or attitude. State clearly the problems you can show the basis for, and ask about what you cannot judge. Confirmed problems do not need to be turned into roundabout questions.
 
-レビュー側で業務ルールや採用理由を補って、設計を完成させない。AIによるレビューの作業制約は [CLAUDE.md](CLAUDE.md) に従う。
+Do not complete the design on the reviewer's side by supplying business rules or rationale. For constraints on AI review, follow [CLAUDE.md](CLAUDE.md).
 
-## 参考にした指針
+## Guidelines referred to
 
-- [Google Engineering Practices](https://google.github.io/eng-practices/review/reviewer/comments.html) は、指摘の理由を説明し、必須の修正と任意の提案を区別するよう勧めている。解決策をすべてレビュー側で設計する必要はないとしている。
-- [Conventional Comments](https://conventionalcomments.org/) は、指摘の意図をラベルで示し、短い要旨に理由や次の対応を添える形式を提案している。不確かな問題には質問を使う。
-- [GitLab Code Review Guidelines](https://docs.gitlab.com/development/code_review/#reviewing-a-merge-request) は、Conventional Commentsを使い、任意の提案を明示するよう勧めている。
-- [Code Review Skill](https://github.com/awesome-skills/code-review-skill/blob/main/SKILL.md) と、その [PR Review Template](https://github.com/awesome-skills/code-review-skill/blob/main/assets/pr-review-template.md) は、確認範囲、具体的な良い点、重要な懸念、レビューの結論を伝える構成を示している。確認範囲と次の対応を短く伝える考え方を取り入れ、良い点の記載は任意とする。固定のチェックリストや承認・差し戻し判定は、そのまま採用しない。
+- [Google Engineering Practices](https://google.github.io/eng-practices/review/reviewer/comments.html) recommends explaining the reason for a comment and distinguishing required changes from optional suggestions. It says the reviewer does not need to design the whole solution.
+- [Conventional Comments](https://conventionalcomments.org/) proposes a format that shows the intent of a comment with a label and adds the reason or next step to a short subject. It uses questions for uncertain problems.
+- [GitLab Code Review Guidelines](https://docs.gitlab.com/development/code_review/#reviewing-a-merge-request) recommends using Conventional Comments and marking optional suggestions.
+- [Code Review Skill](https://github.com/awesome-skills/code-review-skill/blob/main/SKILL.md) and its [PR Review Template](https://github.com/awesome-skills/code-review-skill/blob/main/assets/pr-review-template.md) show a structure that conveys the scope checked, specific good points, important concerns, and the conclusion of the review. This document adopts the idea of briefly stating the scope checked and the next step, and makes good points optional. It does not adopt fixed checklists or approve/reject verdicts as they are.

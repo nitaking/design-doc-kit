@@ -1,10 +1,10 @@
-# Validation / 検証・確認
+# Validation
 
-<!-- 検証の説明を分けた方が読みやすい場合に使う。見出しや書式は検証内容に合わせる。
-     テストの分類からではなく、何が心配で、何を確かめたいかから書く。
-     確かめたいことに対して、方法と期待する結果を対応させる。
-     リリース後に確かめる場合も、何を根拠に判断するかを説明する。
-     検証の計画と、実施して得た結果は区別する。
-     レビュー観点は ../../REVIEW.md を参照し、説明が必要な内容だけを本文に反映する。 -->
+<!-- Use this when verification reads better separately. Fit the headings and format to what is verified.
+     Start from what worries you and what you want to confirm, not from categories of tests.
+     Pair each thing to confirm with a method and an expected result.
+     When confirming after release, also explain what the judgment will be based on.
+     Keep the verification plan distinct from the results obtained by carrying it out.
+     See ../../REVIEW.md for review viewpoints, and reflect in the document only what needs explaining. -->
 
-<確かめたいことと、その方法・期待する結果>
+<What you want to confirm, with the method and expected result>

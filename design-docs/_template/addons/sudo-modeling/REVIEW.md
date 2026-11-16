@@ -1,7 +1,7 @@
-# sudoモデリングのレビュー観点
+# Review viewpoints for sudo modeling
 
-DDDに準じたオニオンアーキテクチャのために、実際の業務をモデルで説明できるかを確かめる。図の枚数や見栄え、特定のツールの使用を合否基準にしない。
+For an onion architecture based on DDD, check whether the actual business can be explained with the model. Do not use the number or appearance of diagrams, or the use of a particular tool, as pass/fail criteria.
 
-- 業務の具体例を、登場する概念や関係に対応させて説明できるか。
-- 用語・ルール・責務の解釈に、未確認の飛躍や認識の違いがないか。
-- モデルで説明できない例や、未確定の用語・ルールを、確定したように扱っていないか。
+- Can concrete business examples be explained by mapping them to the concepts and relationships that appear?
+- Are there unconfirmed leaps or differences in understanding in how terms, rules, and responsibilities are read?
+- Are examples the model cannot explain, or undecided terms and rules, treated as if they were settled?

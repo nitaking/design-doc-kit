@@ -1,20 +1,20 @@
-# Operations / 運用・変更手順
+# Operations
 
-<!-- 変更の適用や運用の説明を分けた方が読みやすい場合に使う。
-     以下の見出しは例であり、実際の作業に合わせて変更・統合してよい。 -->
+<!-- Use this when applying the change, or operating it, reads better separately.
+     The headings below are examples. Change or merge them to fit the actual work. -->
 
-## 変更の進め方
+## How the change proceeds
 
-<!-- 対象とする環境や利用者を示し、操作と結果の確認を実行順に書く。
-     移行、公開、旧機能の廃止が一連の作業なら、順序が分かるようにまとめる。
-     次の作業へ進む条件がある場合は、その作業の説明に添える。 -->
+<!-- State the target environments and users, and write the operations and how to check their results in the order they run.
+     If migration, release, and retiring the old feature are one sequence of work, write them together so the order is clear.
+     If there is a condition for moving to the next step, put it with the explanation of that step. -->
 
-<変更を適用する手順と、結果の確認方法>
+<Steps to apply the change and how to check the result>
 
-## 失敗時の対応
+## Response to failure
 
-<!-- どの条件で中断や切り戻しを判断し、どう対応するかを書く。
-     戻せない変更や、復旧後も残る影響があれば説明する。
-     実施手順と一緒に説明する方が分かりやすい場合は、この節を統合してよい。 -->
+<!-- Write the conditions for deciding to stop or roll back, and how to respond.
+     Explain changes that cannot be undone and effects that remain after recovery.
+     If it reads better together with the steps, merge this section into them. -->
 
-<失敗を判断する条件と、対応方法>
+<Conditions for judging failure and how to respond>

@@ -16,9 +16,9 @@
 
   // markdownlint
   "markdownlint.config": {
-    "MD013": false,  // 行の長さ制限を無効化
-    "MD033": false,  // HTML許可
-    "MD041": false   // 最初の行がh1でなくてもOK
+    "MD013": false,  // no line length limit
+    "MD033": false,  // allow HTML
+    "MD041": false   // first line need not be h1
   },
 
   // Paste Image
@@ -32,11 +32,7 @@
   // Explorer
   "explorer.sortOrder": "mixed",
 
-  // textlint
-  "textlint.run": "onSave",
-  "textlint.nodePath": "node_modules",
-
-// --- 貼り付け画像は MD と同ディレクトリ、ドキュメント名でスコープ ---
+  // --- Pasted images go next to the Markdown file, scoped by document name ---
   "markdown.editor.filePaste.enabled": "smart",
   "markdown.editor.filePaste.copyIntoWorkspace": "mediaFiles",
   "markdown.editor.drop.enabled": true,
@@ -46,7 +42,7 @@
   },
   "markdown.copyFiles.overwriteBehavior": "nameIncrementally",
 
-  // --- 相対リンク・画像パスの破損検知 ---
+  // --- Detect broken relative links and image paths ---
   "markdown.validate.enabled": true,
   "markdown.validate.fileLinks.enabled": "error",
   "markdown.validate.fragmentLinks.enabled": "warning",
@@ -55,7 +51,7 @@
   "markdown.updateLinksOnFileMove.enabled": "always",
   "markdown.updateLinksOnFileMove.include": ["**/*.md", "**/*.{png,svg,jpg,d2,excalidraw}"],
 
-  // --- 生成物を折りたたんでツリーを読めるようにする ---
+  // --- Nest generated files to keep the tree readable ---
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {

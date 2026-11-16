@@ -1,1 +1,1 @@
-- sudoモデリングはDDDのために行う。AIが業務ルールやモデルを推測で完成させず、作者が具体例とモデルを照らし合わせる検討を支援する。
+- sudo modeling is done for DDD. AI does not complete business rules or models by guessing. It supports the author in comparing concrete examples with the model.

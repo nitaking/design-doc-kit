@@ -1,9 +1,9 @@
-# 任意部品: sudoモデリング
+# Add-on: sudo modeling
 
-DDDのために、業務の具体例とモデルを照らし合わせて検討するための部品。図をそろえるためではなく、具体例とモデルを照らし合わせるために使う。
+An add-on for DDD, used to compare concrete business examples with the model.
 
-| ファイル | 使い方 |
+| File | How to use |
 | --- | --- |
-| [design.md](design.md) | 各 Design Doc の `design.md` に節として貼り付ける |
-| [CLAUDE.md](CLAUDE.md) | `local/CLAUDE.md` に `@../design-docs/_template/addons/sudo-modeling/CLAUDE.md` と書いて取り込む |
-| [REVIEW.md](REVIEW.md) | `local/REVIEW.md` からリンクする |
+| [design.md](design.md) | Paste it as a section into the `design.md` of each design doc |
+| [CLAUDE.md](CLAUDE.md) | Import it by writing `@../design-docs/_template/addons/sudo-modeling/CLAUDE.md` in `local/CLAUDE.md` |
+| [REVIEW.md](REVIEW.md) | Link to it from `local/REVIEW.md` |

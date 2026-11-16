@@ -6,7 +6,6 @@
     "esbenp.prettier-vscode",
     "mushan.vscode-paste-image",
     "eamodio.gitlens",
-    "pomdtr.excalidraw-editor",
-    "taichi.vscode-textlint"
+    "pomdtr.excalidraw-editor"
   ]
 }

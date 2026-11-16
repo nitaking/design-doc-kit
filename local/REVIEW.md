@@ -1,6 +1,5 @@
-# このリポジトリ固有のレビュー観点
+# Review viewpoints specific to this repository
 
-<!-- このリポジトリだけの確認観点を書く。upstream はこのファイルを変更しない。
-     例: 特定の施策で事前に確認する相手、社内規程に基づく確認。
-     任意部品の観点を使う場合は、そのファイルへリンクする。
-     例: ../design-docs/_template/addons/sudo-modeling/REVIEW.md -->
+<!-- Write review viewpoints that apply only to this repository. The kit does not change this file.
+     Examples: who to consult in advance for a particular kind of change, checks based on internal rules.
+     To use an add-on's viewpoints, link to its file. -->

@@ -1,97 +1,77 @@
 # design-doc-kit
 
-Design Doc を書き、レビューするためのリポジトリの土台です。AIに作者の判断を代行させないことを前提にしています。
+A foundation for repositories where design docs are written and reviewed. It assumes AI must not make the author's decisions.
 
-[English](#english)
+[日本語](https://github.com/nitaking/design-doc-kit/tree/ja)
 
-## 考え方
+## Idea
 
-AIに設計書を任せると、作者が決めていない業務ルールや採用理由まで、もっともらしく埋まります。このキットは、AIの役割を「作者への質問」と「確認できた内容の整理」に限り、未決事項を未決のまま残します。
+When a design doc is left to AI, even business rules and rationale the author never decided get filled in plausibly. This kit limits the role of AI to asking the author questions and organizing what has been confirmed, and leaves open questions open.
 
-AI向けの制約は [CLAUDE.md](CLAUDE.md)、レビューの観点は [REVIEW.md](REVIEW.md) にあります。
+## What is included
 
-## 含まれるもの
+```mermaid
+flowchart LR
+  author([Author])
+  ai([AI])
+  reviewer([Reviewer])
 
-| 対象 | ファイル |
-| --- | --- |
-| AIへの執筆・レビュー規約 | [CLAUDE.md](CLAUDE.md) |
-| レビュー観点 | [REVIEW.md](REVIEW.md) |
-| Design Doc のテンプレート | [design-docs/_template/](design-docs/_template/) |
-| 任意部品（sudoモデリング） | [design-docs/_template/addons/](design-docs/_template/addons/sudo-modeling/README.md) |
-| 作成・作図・lint のタスク | [mise.toml](mise.toml) |
-| 日本語の文章 lint | [.textlintrc.yml](.textlintrc.yml)、[textlint.yml](.github/workflows/textlint.yml) |
+  subgraph kit["Owned by the kit: updated by merging upstream"]
+    claude["CLAUDE.md<br/>rules for AI"]
+    review["REVIEW.md<br/>review viewpoints"]
+    template["design-docs/_template/<br/>templates"]
+    addon["addons/sudo-modeling/<br/>optional add-on"]
+    tasks["mise.toml<br/>tasks"]
+  end
 
-## 使い方
+  subgraph yours["Owned by your repository"]
+    local["local/<br/>your own rules and viewpoints"]
+    docs["design-docs/YYYY-MM-DD-*/<br/>your design docs"]
+  end
 
-GitHub の「Use this template」からリポジトリを作ります。[mise](https://mise.jdx.dev/) が必要です。
+  author -->|writes| docs
+  reviewer -->|reviews| docs
+  ai -->|follows| claude
+  reviewer -->|checks with| review
+  template -->|copied into| docs
+  tasks -->|doc:new, d2:png| docs
+  claude -->|imports| local
+  review -->|links to| local
+  addon -.->|enabled from| local
+```
+
+The Japanese edition on the [`ja` branch](https://github.com/nitaking/design-doc-kit/tree/ja) is the original text. It also includes textlint rules for Japanese prose.
+
+## Usage
+
+Create a repository from "Use this template" on GitHub. [mise](https://mise.jdx.dev/) is required.
 
 ```shell
 mise install
-pnpm install
-mise run doc:new <slug>     # design-docs/YYYY-MM-DD-<slug>/README.md を作成
-mise run textlint:diff      # 変更した Markdown を検査
-mise run d2:png             # 変更した .d2 を PNG に変換
+mise run doc:new <slug>     # creates design-docs/YYYY-MM-DD-<slug>/README.md
+mise run d2:png             # converts changed .d2 files to PNG
 ```
 
-Design Doc の書き方は [design-docs/README.md](design-docs/README.md) を参照してください。
+For how to write a design doc, see [design-docs/README.md](design-docs/README.md).
 
-## リポジトリ固有の設定
+## Repository-specific settings
 
-このキットが持つファイルは編集せず、固有の内容は `local/` に書きます。こうしておくと、キットの更新を取り込むときに衝突しません。
+Do not edit the files this kit owns. Write repository-specific content in `local/`. This avoids conflicts when you pull updates from the kit.
 
-| 書く内容 | 場所 |
+| What to write | Where |
 | --- | --- |
-| AIへの固有の指示 | [local/CLAUDE.md](local/CLAUDE.md) |
-| 固有のレビュー観点 | [local/REVIEW.md](local/REVIEW.md) |
-| 自分たちの README | `.github/README.md` |
+| Instructions for AI specific to the repository | [local/CLAUDE.md](local/CLAUDE.md) |
+| Review viewpoints specific to the repository | [local/REVIEW.md](local/REVIEW.md) |
+| Your own README | `.github/README.md` |
 
-## 更新の取り込み
-
-```shell
-git remote add upstream https://github.com/nitaking/design-doc-kit.git   # 初回のみ
-mise run kit:update
-```
-
-## ライセンス
-
-- 設定ファイルとタスク定義: [MIT](LICENSE)
-- 規約とテンプレートの文面（Markdown）: [CC BY 4.0](LICENSE-CC-BY-4.0)
-
----
-
-## English
-
-A foundation for repositories where teams write and review design docs. It assumes AI must not make the author's decisions.
-
-The contents (guidelines, templates, and lint rules) are written in Japanese.
-
-### Idea
-
-When AI drafts a design doc, it fills in business rules and rationale the author never decided, and the result reads plausibly. This kit limits AI to asking the author questions and organizing what has been confirmed. Open questions stay open.
-
-- [CLAUDE.md](CLAUDE.md): constraints for AI when writing and reviewing
-- [REVIEW.md](REVIEW.md): review viewpoints for authors and reviewers
-- [design-docs/_template/](design-docs/_template/): design doc templates
-- [mise.toml](mise.toml): tasks for scaffolding, D2 diagrams, and textlint
-
-### Usage
-
-Create a repository with "Use this template", then:
-
-```shell
-mise install
-pnpm install
-mise run doc:new <slug>
-```
-
-Keep kit-owned files unedited and put repository-specific content in `local/`. To pull updates:
+## Pulling updates
 
 ```shell
 git remote add upstream https://github.com/nitaking/design-doc-kit.git   # first time only
-mise run kit:update
+mise run kit:update        # merges upstream/main
 ```
 
-### License
+## License
 
-- Configuration and task definitions: [MIT](LICENSE)
-- Guidelines and templates (Markdown): [CC BY 4.0](LICENSE-CC-BY-4.0)
+- Configuration files and task definitions: [MIT](LICENSE)
+- Text of the rules and templates (Markdown): [CC BY 4.0](LICENSE-CC-BY-4.0)
