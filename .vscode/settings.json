@@ -1,0 +1,68 @@
+{
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    }
+  },
+
+  // Markdown All in One
+  "markdown.extension.toc.levels": "2..4",
+  "markdown.extension.toc.updateOnSave": true,
+
+  // markdownlint
+  "markdownlint.config": {
+    "MD013": false,  // 行の長さ制限を無効化
+    "MD033": false,  // HTML許可
+    "MD041": false   // 最初の行がh1でなくてもOK
+  },
+
+  // Paste Image
+  "pasteImage.path": "${projectRoot}/docs/images",
+  "pasteImage.basePath": "${projectRoot}",
+  "pasteImage.prefix": "/",
+
+  // Git
+  "git.autofetch": true,
+
+  // Explorer
+  "explorer.sortOrder": "mixed",
+
+  // textlint
+  "textlint.run": "onSave",
+  "textlint.nodePath": "node_modules",
+
+// --- 貼り付け画像は MD と同ディレクトリ、ドキュメント名でスコープ ---
+  "markdown.editor.filePaste.enabled": "smart",
+  "markdown.editor.filePaste.copyIntoWorkspace": "mediaFiles",
+  "markdown.editor.drop.enabled": true,
+  "markdown.editor.drop.copyIntoWorkspace": "mediaFiles",
+  "markdown.copyFiles.destination": {
+    "/**/*.md": "./${documentBaseName}-${fileName}"
+  },
+  "markdown.copyFiles.overwriteBehavior": "nameIncrementally",
+
+  // --- 相対リンク・画像パスの破損検知 ---
+  "markdown.validate.enabled": true,
+  "markdown.validate.fileLinks.enabled": "error",
+  "markdown.validate.fragmentLinks.enabled": "warning",
+  "markdown.validate.referenceLinks.enabled": "error",
+  "markdown.validate.unusedLinkDefinitions.enabled": "warning",
+  "markdown.updateLinksOnFileMove.enabled": "always",
+  "markdown.updateLinksOnFileMove.include": ["**/*.md", "**/*.{png,svg,jpg,d2,excalidraw}"],
+
+  // --- 生成物を折りたたんでツリーを読めるようにする ---
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.d2": "${capture}.png, ${capture}.svg, ${capture}.pdf",
+    "*.excalidraw": "${capture}.png, ${capture}.svg",
+    "README.md": "design.md, operations.md, validation.md, test-plan.md"
+  },
+
+  "files.associations": { "*.excalidraw": "json" }
+}

@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "yzhang.markdown-all-in-one",
+    "editorconfig.editorconfig",
+    "davidanson.vscode-markdownlint",
+    "esbenp.prettier-vscode",
+    "mushan.vscode-paste-image",
+    "eamodio.gitlens",
+    "pomdtr.excalidraw-editor",
+    "taichi.vscode-textlint"
+  ]
+}

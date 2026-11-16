@@ -1,0 +1,8 @@
+# Node.js
+node_modules/
+
+# macOS
+.DS_Store
+
+# IDE (共有設定のみコミットする)
+.idea/

@@ -1,0 +1,179 @@
+[tools]
+"aqua:terrastruct/d2" = "latest"
+pnpm = "11.10.0"
+
+# Available tasks:
+#   mise run doc:new <slug>                  - Create new Design Doc from template
+#                                              e.g. mise run doc:new my-feature
+#
+#   mise run d2:fmt                          - Format .d2 files
+#   mise run d2:fmt --changed                  changed files only (default)
+#   mise run d2:fmt --all                      all files
+#   mise run d2:fmt --file <path/to/file.d2>   single file
+#
+#   mise run d2:play <path/to/file.d2>       - Open in browser for live preview
+#
+#   mise run d2:png                          - Convert .d2 files to PNG (parallel)
+#   mise run d2:png --changed                  changed files only (default)
+#   mise run d2:png --all                      all files
+#   mise run d2:png --file <path/to/file.d2>   single file
+#
+#   mise run kit:update                      - Merge upstream design-doc-kit changes
+#
+#   mise run textlint (tl)                   - Check all Markdown files with textlint (design-docs/**)
+#   mise run textlint:diff (tld)             - Check changed Markdown files with textlint (design-docs/** only)
+#
+#   mise run textlint:fix (tlf)              - Auto-fix all Markdown files with textlint (design-docs/**)
+#   mise run textlint:fix --file <path/to/file.md>  single file
+#   mise run textlint:fix:diff (tlfd)        - Auto-fix changed Markdown files with textlint (design-docs/** only)
+
+[tasks."d2:fmt"]
+description = "Format .d2 files. Default: --changed. Flags: --file <file>, --all"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+cores=$(getconf _NPROCESSORS_ONLN)
+flag="${1:---changed}"
+if [[ "$flag" == "--file" ]]; then
+  file="${2:?Usage: mise run d2:fmt --file <path/to/file.d2>}"
+  d2 fmt "$file"
+  echo "Done."
+  exit 0
+elif [[ "$flag" == "--changed" ]]; then
+  files=$(git diff --name-only HEAD -- '*.d2'; git ls-files --others --exclude-standard '*.d2')
+  if [[ -z "$files" ]]; then
+    echo "No changed .d2 files."
+    exit 0
+  fi
+elif [[ "$flag" == "--all" ]]; then
+  files=$(find design-docs -name '*.d2')
+else
+  echo "Unknown flag: $flag (use --file <file>, --changed, --all)" >&2
+  exit 1
+fi
+echo "$files" | xargs -P "$cores" -I{} d2 fmt {}
+echo "Done."
+"""
+
+[tasks."d2:play"]
+description = "Open a .d2 file in browser for live preview."
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+d2 play "${1:?Usage: mise run d2:play <path/to/file.d2>}"
+"""
+
+[tasks."d2:png"]
+description = "Convert .d2 files to PNG in parallel. Default: --changed. Flags: --file <file>, --all"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+cores=$(getconf _NPROCESSORS_ONLN)
+flag="${1:---changed}"
+if [[ "$flag" == "--file" ]]; then
+  file="${2:?Usage: mise run d2:png --file <path/to/file.d2>}"
+  out="${file%.d2}.png"
+  echo "Generating $out"
+  d2 "$file" "$out"
+  echo "Done."
+  exit 0
+elif [[ "$flag" == "--changed" ]]; then
+  files=$(git diff --name-only HEAD -- '*.d2'; git ls-files --others --exclude-standard '*.d2')
+  if [[ -z "$files" ]]; then
+    echo "No changed .d2 files."
+    exit 0
+  fi
+elif [[ "$flag" == "--all" ]]; then
+  files=$(find design-docs -name '*.d2')
+else
+  echo "Unknown flag: $flag (use --file <file>, --changed, --all)" >&2
+  exit 1
+fi
+echo "$files" | xargs -P "$cores" -I{} bash -c 'out="${1%.d2}.png"; echo "Generating $out"; d2 "$1" "$out"' _ {}
+echo "Done."
+"""
+
+[tasks."textlint"]
+alias = "tl"
+description = "Check all Markdown files with textlint (design-docs/**)."
+run = "pnpm exec textlint 'design-docs/**/*.md'"
+
+[tasks."textlint:diff"]
+alias = "tld"
+description = "Check changed Markdown files with textlint (git diff vs HEAD, plus untracked, design-docs/** only)."
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+files=$(git diff --name-only HEAD -- ':(glob)design-docs/**/*.md'; git ls-files --others --exclude-standard ':(glob)design-docs/**/*.md')
+if [[ -z "$files" ]]; then
+  echo "No changed .md files."
+  exit 0
+fi
+echo "$files" | xargs pnpm exec textlint
+"""
+
+[tasks."textlint:fix"]
+alias = "tlf"
+description = "Auto-fix all Markdown files with textlint (design-docs/**). Flags: --file <file>"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+flag="${1:-}"
+if [[ "$flag" == "--file" ]]; then
+  file="${2:?Usage: mise run textlint:fix --file <path/to/file.md>}"
+  pnpm exec textlint --fix "$file"
+  echo "Done."
+  exit 0
+elif [[ -n "$flag" ]]; then
+  echo "Unknown flag: $flag (use --file <file>)" >&2
+  exit 1
+fi
+pnpm exec textlint --fix 'design-docs/**/*.md'
+echo "Done."
+"""
+
+[tasks."textlint:fix:diff"]
+alias = "tlfd"
+description = "Auto-fix changed Markdown files with textlint (git diff vs HEAD, plus untracked, design-docs/** only)."
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+files=$(git diff --name-only HEAD -- ':(glob)design-docs/**/*.md'; git ls-files --others --exclude-standard ':(glob)design-docs/**/*.md')
+if [[ -z "$files" ]]; then
+  echo "No changed .md files."
+  exit 0
+fi
+echo "$files" | xargs pnpm exec textlint --fix
+"""
+
+[tasks."doc:new"]
+description = "Create a new Design Doc directory from _template. Usage: mise run doc:new <slug>"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+slug="${1:?Usage: mise run doc:new <slug>  (e.g. my-feature)}"
+today=$(date +%Y-%m-%d)
+dir="design-docs/${today}-${slug}"
+if [[ -d "$dir" ]]; then
+  echo "Already exists: $dir" >&2
+  exit 1
+fi
+mkdir -p "$dir"
+
+cp design-docs/_template/README.md "$dir/README.md"
+echo "Created: $dir/README.md"
+echo "Edit it with: ${EDITOR:-vi} $dir/README.md"
+"""
+
+[tasks."kit:update"]
+description = "Merge upstream (design-doc-kit) changes into this repository."
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+if ! git remote get-url upstream >/dev/null 2>&1; then
+  echo "No 'upstream' remote. Add it first: git remote add upstream <design-doc-kit URL>" >&2
+  exit 1
+fi
+git fetch upstream
+git merge upstream/main
+"""
