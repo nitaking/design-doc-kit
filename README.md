@@ -11,8 +11,8 @@ A foundation for repositories where design docs are written and reviewed. It ass
 ### When design docs were managed in Notion
 
 - The diagrams Notion renders are Mermaid
-  - Commenting on them is awkward
-  - When the commented part is changed, the comment is lost
+  - Commenting on part of a diagram is awkward
+- When the commented part is changed, the comment is lost
 - Diagrams other than Mermaid are hard to render
 - Version control is hard
 
@@ -28,7 +28,7 @@ We wanted to exchange proposals, comments, and revisions the way pull requests a
 ### What became a problem afterwards
 
 - Working out a design by talking it through with AI became easier. On the other hand, AI gets ahead of the author's thinking, so the design becoming shallow turned into a risk
-- Engineers with little experience fall into this trap easily. Senior engineers also sometimes cannot get out of it once they have fallen in, when they cannot take time to think
+- With little design experience, or with experience but no time to think, it is hard to get out of the bias of a proposal once you have seen it
 - Design is where understanding is needed most, and AI output that the eyes slide over gets in the way of understanding
 
 ### Motivation
