@@ -1,6 +1,10 @@
 # design-doc-kit
 
-A foundation for repositories where design docs are written and reviewed. It assumes AI must not make the author's decisions.
+[![kit](https://github.com/nitaking/design-doc-kit/actions/workflows/kit.yml/badge.svg?branch=main)](https://github.com/nitaking/design-doc-kit/actions/workflows/kit.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?logo=github&logoColor=white)](https://github.com/new?template_owner=nitaking&template_name=design-doc-kit)
+
+A repository template for writing and reviewing design docs. Its purpose is to keep AI from making the author's decisions.
 
 [日本語](https://github.com/nitaking/design-doc-kit/tree/ja)
 
@@ -103,7 +107,15 @@ mise run kit:update
 
 Fetches the latest kit and overwrites the files the kit owns. `local/` and your design docs under `design-docs/` are untouched. Review the result with `git diff` and commit it.
 
+`KIT_BRANCH` also accepts a tag. `KIT_BRANCH=v0.1.0` pins that version. Changes are listed in [Releases](https://github.com/nitaking/design-doc-kit/releases).
+
 If you maintain a fork of the kit for your organization, point `KIT_REPO=<URL of the fork>` at it.
+
+On every push, CI creates a repository from the kit and checks that `doc:new` and `kit:update` work ([kit.yml](.github/workflows/kit.yml)).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
