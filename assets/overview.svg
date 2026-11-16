@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1028 772" width="1028" height="772" font-family="-apple-system, 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', Meiryo, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1e1e1e"/></marker></defs>
+<rect width="1028" height="772" rx="12" fill="#ffffff"/>
+<g transform="translate(24 24)">
+<rect x="0" y="0" width="460" height="520" rx="10" fill="#fff5f5" stroke="#c92a2a" stroke-width="2"/>
+<text x="30" y="24" font-size="24" fill="#c92a2a" font-weight="700" dominant-baseline="hanging">AIに設計を任せる</text>
+<rect x="30" y="84" width="400" height="66" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="230.0" y="117.0" font-size="17" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">作者「設計して」</text>
+<line x1="230" y1="154" x2="230" y2="182" stroke="#1e1e1e" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="30" y="186" width="400" height="66" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="230.0" y="219.0" font-size="17" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">AIが思考を先取りして、設計を書く</text>
+<line x1="230" y1="256" x2="230" y2="284" stroke="#1e1e1e" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="30" y="288" width="400" height="66" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="230.0" y="321.0" font-size="17" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">整った長い文章ができあがる</text>
+<line x1="230" y1="358" x2="230" y2="386" stroke="#1e1e1e" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="30" y="392" width="400" height="98" rx="10" fill="#ffc9c9" stroke="#c92a2a" stroke-width="2"/>
+<text x="230.0" y="427.7" font-size="19" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central" font-weight="600">目が滑り、理解が進まない</text>
+<text x="230.0" y="454.3" font-size="19" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central" font-weight="600">設計が浅くなる</text>
+<rect x="520" y="0" width="460" height="520" rx="10" fill="#ebfbee" stroke="#2b8a3e" stroke-width="2"/>
+<text x="550" y="24" font-size="24" fill="#2b8a3e" font-weight="700" dominant-baseline="hanging">design-doc-kit を使う</text>
+<rect x="550" y="84" width="400" height="66" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="750.0" y="117.0" font-size="17" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">作者が具体例から書きはじめる</text>
+<line x1="750" y1="154" x2="750" y2="182" stroke="#1e1e1e" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="550" y="186" width="400" height="66" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="750.0" y="219.0" font-size="17" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">AIは質問し、確認できたことを整理する</text>
+<line x1="750" y1="256" x2="750" y2="284" stroke="#1e1e1e" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="550" y="288" width="400" height="66" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="750.0" y="321.0" font-size="17" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">未決のことは、未決のまま残る</text>
+<line x1="750" y1="358" x2="750" y2="386" stroke="#1e1e1e" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="550" y="392" width="400" height="98" rx="10" fill="#b2f2bb" stroke="#2b8a3e" stroke-width="2"/>
+<text x="750.0" y="427.7" font-size="19" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central" font-weight="600">人間が思考に没頭できる</text>
+<text x="750.0" y="454.3" font-size="19" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central" font-weight="600">AIは伴走だけをする</text>
+<rect x="0" y="560" width="980" height="164" rx="10" fill="#f1f3f5" stroke="#495057" stroke-width="2"/>
+<text x="30" y="580" font-size="21" fill="#495057" font-weight="700" dominant-baseline="hanging">設計書を Git で管理する</text>
+<rect x="25" y="630" width="222" height="72" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="136.0" y="656.2" font-size="14" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">Pull Request で</text>
+<text x="136.0" y="675.8" font-size="14" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">提案・コメント・修正</text>
+<rect x="261" y="630" width="222" height="72" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="372.0" y="666.0" font-size="14" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">変更の履歴が残る</text>
+<rect x="497" y="630" width="222" height="72" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="608.0" y="666.0" font-size="14" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">図の形式を選べる</text>
+<rect x="733" y="630" width="222" height="72" rx="10" fill="#ffffff" stroke="#1e1e1e" stroke-width="1"/>
+<text x="844.0" y="656.2" font-size="14" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">submodule で複数リポジトリの</text>
+<text x="844.0" y="675.8" font-size="14" fill="#1e1e1e" text-anchor="middle" dominant-baseline="central">Agent が同じ設計を読む</text>
+</g></svg>
