@@ -1,6 +1,6 @@
 # design-doc-kit
 
-Design Doc を書き、レビューするためのリポジトリの土台です。AIに作者の判断を代行させないことを前提にしています。
+Design Doc を書き、レビューするためのリポジトリテンプレート。AIに作者の判断を代行させないことを目的にしています。
 
 [English](https://github.com/nitaking/design-doc-kit/tree/main)
 
