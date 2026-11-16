@@ -8,7 +8,7 @@ A foundation for repositories where design docs are written and reviewed. It ass
 
 ## Why this exists
 
-### When design docs were managed in Notion
+### Design docs × Notion: the problems
 
 - The diagrams Notion renders are Mermaid
   - Commenting on part of a diagram is awkward
@@ -18,20 +18,20 @@ A foundation for repositories where design docs are written and reviewed. It ass
 
 We wanted to exchange proposals, comments, and revisions the way pull requests allow, and to merge into develop.
 
-### After adopting Git
+### Design docs × Git: what got better
 
 - Applied as a submodule, it became easier to let AI coding agents run on their own across multiple repositories
 - In reviews too, agents can be used with consistent specifications and context
 - For people as well, it became easier to reflect the design
 - It is especially effective for designs with clear inputs and outputs, such as databases and APIs
 
-### What became a problem afterwards
+### Designing with AI agents: the problems
 
 - Working out a design by talking it through with AI became easier. On the other hand, AI gets ahead of the author's thinking, so the design becoming shallow turned into a risk
 - With little design experience, or with experience but no time to think, it is hard to get out of the bias of a proposal once you have seen it
 - Design is where understanding is needed most, and AI output that the eyes slide over gets in the way of understanding
 
-### Motivation
+### What this kit aims for
 
 After these experiences, this kit sets up a format in which people can immerse themselves in thinking, and AI does not design and only accompanies.
 
