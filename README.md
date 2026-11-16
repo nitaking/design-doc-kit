@@ -4,7 +4,7 @@ Design Doc を書き、レビューするためのリポジトリの土台です
 
 [English](https://github.com/nitaking/design-doc-kit/tree/main)
 
-![AIに設計を任せる場合と、design-doc-kit を使う場合の比較](assets/overview.svg)
+![AIが書く場合は全部が決まったように見え、AIが聞く場合は決めたことと未決が見分けられる](assets/overview.svg)
 
 ## なぜ作ったか
 
