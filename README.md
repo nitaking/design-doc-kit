@@ -39,15 +39,21 @@ The constraints for AI are in [CLAUDE.md](CLAUDE.md), and the review viewpoints 
 
 ## How it differs from similar tools
 
-Similar tools fall into three groups. This kit gives AI a different role from all of them.
+This kit is not a tool that has AI write the design doc. The author writes it; AI only asks questions and reviews.
 
-| Group | Examples | Role of AI | How this kit differs |
-| --- | --- | --- | --- |
-| Spec-driven development | [Spec Kit](https://github.com/github/spec-kit), [OpenSpec](https://github.com/Fission-AI/OpenSpec), [cc-sdd](https://github.com/gotalab/cc-sdd), [Tsumiki](https://github.com/classmethod/tsumiki) | AI generates requirements, design, and tasks; people review and approve them | AI does not write the design doc. The goal is not to have an agent implement, but to have the author think through the design and people review it |
-| ADR / docs-as-code | [MADR](https://github.com/adr/madr), [adr-tools](https://github.com/npryce/adr-tools), [Log4brains](https://github.com/thomvaill/log4brains) | None. They record and publish decisions people wrote | This kit assumes AI is used, and ships constraints for AI together with review viewpoints |
-| Skills where AI asks questions | [grill-me](https://github.com/mattpocock/skills), brainstorming in [superpowers](https://github.com/obra/superpowers) | AI asks questions to draw out the author's thinking. grill-me attaches a recommended answer to each question; brainstorming has AI write the design doc at the end | Drawing out the author's thinking is shared, and they can be used together. This kit provides the repository foundation that keeps the result: templates, review viewpoints, and a pull request workflow |
+| | **design-doc-kit** | Spec-driven development | Interview skills | ADR tools |
+| --- | :---: | :---: | :---: | :---: |
+| Who writes the design doc | **Author** | AI | AI | Author |
+| Role of AI | Ask, organize, review | Generate | Ask | None |
+| Unknowns | **Left open** | Filled with guesses | Asked until decided | — |
+| Proposals kept apart from decisions | ✅ | △ | — | — |
+| Review viewpoints included | ✅ | △ | — | — |
+| Shared across repositories | ✅ submodule | — | — | △ |
+| Goal | People think, people review | Agents implement | Shared understanding | Record and publish decisions |
 
-Spec-driven development tools allow AI to fill unknowns with guesses and move on. For example, `/speckit.specify` in Spec Kit instructs the agent to "make informed guesses based on context and industry standards" and to use at most three clarification markers. This kit asks the opposite: AI leaves what the author has not answered open. We believe the value of a design doc lies in keeping facts, guesses, proposals, decisions, and open questions apart.
+- **Spec-driven development**: [Spec Kit](https://github.com/github/spec-kit), [OpenSpec](https://github.com/Fission-AI/OpenSpec), [cc-sdd](https://github.com/gotalab/cc-sdd), [Tsumiki](https://github.com/classmethod/tsumiki). AI generates requirements, design, and tasks; people approve them. AI fills unknowns with guesses. For example, `/speckit.specify` in Spec Kit instructs the agent to "make informed guesses based on context and industry standards" and to use at most three clarification markers. Tsumiki attaches a confidence level to each item (△).
+- **Interview skills**: [grill-me](https://github.com/mattpocock/skills) and brainstorming in [superpowers](https://github.com/obra/superpowers). Like this kit, they draw out the author's thinking through questions, and they can be used together with it. grill-me attaches a recommended answer to each question and leaves no files. brainstorming has AI write the design doc at the end.
+- **ADR tools**: [MADR](https://github.com/adr/madr), [adr-tools](https://github.com/npryce/adr-tools), [Log4brains](https://github.com/thomvaill/log4brains). They record and publish decisions people wrote, and do not address how AI is used. Log4brains supports multiple packages in a monorepo (△).
 
 ## What is included
 
