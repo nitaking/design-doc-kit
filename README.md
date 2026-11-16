@@ -39,35 +39,7 @@ The constraints for AI are in [CLAUDE.md](CLAUDE.md), and the review viewpoints 
 
 ## What is included
 
-```mermaid
-flowchart LR
-  author([Author])
-  ai([AI])
-  reviewer([Reviewer])
-
-  subgraph kit["Owned by the kit: updated by merging upstream"]
-    claude["CLAUDE.md<br/>rules for AI"]
-    review["REVIEW.md<br/>review viewpoints"]
-    template["design-docs/_template/<br/>templates"]
-    addon["addons/sudo-modeling/<br/>optional add-on"]
-    tasks["mise.toml<br/>tasks"]
-  end
-
-  subgraph yours["Owned by your repository"]
-    local["local/<br/>your own rules and viewpoints"]
-    docs["design-docs/YYYY-MM-DD-*/<br/>your design docs"]
-  end
-
-  author -->|writes| docs
-  reviewer -->|reviews| docs
-  ai -->|follows| claude
-  reviewer -->|checks with| review
-  template -->|copied into| docs
-  tasks -->|doc:new, d2:png| docs
-  claude -->|imports| local
-  review -->|links to| local
-  addon -.->|enabled from| local
-```
+![Files owned by the kit and files owned by your repository](assets/included.svg)
 
 The Japanese edition on the [`ja` branch](https://github.com/nitaking/design-doc-kit/tree/ja) is the original text. It also includes textlint rules for Japanese prose.
 
