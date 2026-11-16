@@ -48,5 +48,3 @@
 - [Conventional Comments](https://conventionalcomments.org/) は、指摘の意図をラベルで示し、短い要旨に理由や次の対応を添える形式を提案している。不確かな問題には質問を使う。
 - [GitLab Code Review Guidelines](https://docs.gitlab.com/development/code_review/#reviewing-a-merge-request) は、Conventional Commentsを使い、任意の提案を明示するよう勧めている。
 - [Code Review Skill](https://github.com/awesome-skills/code-review-skill/blob/main/SKILL.md) と、その [PR Review Template](https://github.com/awesome-skills/code-review-skill/blob/main/assets/pr-review-template.md) は、確認範囲、具体的な良い点、重要な懸念、レビューの結論を伝える構成を示している。確認範囲と次の対応を短く伝える考え方を取り入れ、良い点の記載は任意とする。固定のチェックリストや承認・差し戻し判定は、そのまま採用しない。
-
-設計書の指摘を重要度へ割り当てる方法は [CLAUDE.md](CLAUDE.md) で管理する。
