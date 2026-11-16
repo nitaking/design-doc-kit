@@ -29,7 +29,7 @@
 
 The headings and format of the templates are not fixed. Explain, as the author, concrete examples of the current situation and the problem you want to solve, and work through the design in a structure that fits what is being designed.
 
-The viewpoints for self-review and review by others are in [REVIEW.md](../REVIEW.md). You do not need a section for each item. For the constraints when using AI, see [CLAUDE.md](../CLAUDE.md).
+The viewpoints for self-review and review by others are in [REVIEW.md](../REVIEW.md). You do not need a section for each item. For the constraints when using AI, see [AGENTS.md](../AGENTS.md).
 
 ## Tips
 

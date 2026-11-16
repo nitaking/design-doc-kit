@@ -40,7 +40,7 @@ When you find something unclear, show the location, what cannot be judged, and t
 
 Deal with the content of the document and its effects, not the author's ability or attitude. State clearly the problems you can show the basis for, and ask about what you cannot judge. Confirmed problems do not need to be turned into roundabout questions.
 
-Do not complete the design on the reviewer's side by supplying business rules or rationale. For constraints on AI review, follow [CLAUDE.md](CLAUDE.md).
+Do not complete the design on the reviewer's side by supplying business rules or rationale. For constraints on AI review, follow [AGENTS.md](AGENTS.md).
 
 ## Guidelines referred to
 
