@@ -102,5 +102,4 @@ mise run kit:update        # merges upstream/main
 
 ## License
 
-- Configuration files and task definitions: [MIT](LICENSE)
-- Text of the rules and templates (Markdown): [CC BY 4.0](LICENSE-CC-BY-4.0)
+[MIT](LICENSE)
