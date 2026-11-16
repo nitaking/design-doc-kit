@@ -4,9 +4,38 @@ A foundation for repositories where design docs are written and reviewed. It ass
 
 [日本語](https://github.com/nitaking/design-doc-kit/tree/ja)
 
-## Idea
+![Leaving the design to AI, compared with using design-doc-kit](assets/overview.svg)
 
-When a design doc is left to AI, even business rules and rationale the author never decided get filled in plausibly. This kit limits the role of AI to asking the author questions and organizing what has been confirmed, and leaves open questions open.
+## Why this exists
+
+### When design docs were managed in Notion
+
+- The diagrams Notion renders are Mermaid
+  - Commenting on them is awkward
+  - When the commented part is changed, the comment is lost
+- Diagrams other than Mermaid are hard to render
+- Version control is hard
+
+We wanted to exchange proposals, comments, and revisions the way pull requests allow, and to merge into develop.
+
+### After adopting Git
+
+- Applied as a submodule, it became easier to let AI coding agents run on their own across multiple repositories
+- In reviews too, agents can be used with consistent specifications and context
+- For people as well, it became easier to reflect the design
+- It is especially effective for designs with clear inputs and outputs, such as databases and APIs
+
+### What became a problem afterwards
+
+- Working out a design by talking it through with AI became easier. On the other hand, AI gets ahead of the author's thinking, so the design becoming shallow turned into a risk
+- Engineers with little experience fall into this trap easily. Senior engineers also sometimes cannot get out of it once they have fallen in, when they cannot take time to think
+- Design is where understanding is needed most, and AI output that the eyes slide over gets in the way of understanding
+
+### Motivation
+
+After these experiences, this kit sets up a format in which people can immerse themselves in thinking, and AI does not design and only accompanies.
+
+The constraints for AI are in [CLAUDE.md](CLAUDE.md), and the review viewpoints are in [REVIEW.md](REVIEW.md).
 
 ## What is included
 
