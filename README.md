@@ -102,6 +102,5 @@ mise run kit:update        # upstream/ja を取り込む
 
 ## ライセンス
 
-- 設定ファイルとタスク定義: [MIT](LICENSE)
-- 規約とテンプレートの文面（Markdown）: [CC BY 4.0](LICENSE-CC-BY-4.0)
+[MIT](LICENSE)
 
